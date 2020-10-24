@@ -17,6 +17,7 @@ public class ReferEarn_Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refer_earn_);
+        Tb_App =findViewById(R.id.Tb_App);
         iniToolBar();
     }
     void iniToolBar(){

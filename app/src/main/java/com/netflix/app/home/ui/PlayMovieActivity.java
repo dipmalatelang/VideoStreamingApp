@@ -1,5 +1,6 @@
 package com.netflix.app.home.ui;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
@@ -63,9 +64,9 @@ public class PlayMovieActivity extends AppCompatActivity {
 
             public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
                 if (playbackState == 2) {
-                    PlayMovieActivity.this.progressBar.setVisibility(0);
+                    PlayMovieActivity.this.progressBar.setVisibility(View.VISIBLE);
                 } else if (playbackState == 3) {
-                    PlayMovieActivity.this.progressBar.setVisibility(8);
+                    PlayMovieActivity.this.progressBar.setVisibility(View.GONE);
                 }
             }
 
@@ -88,15 +89,16 @@ public class PlayMovieActivity extends AppCompatActivity {
             }
         });
         this.btn_fullscreen.setOnClickListener(new OnClickListener() {
+            @SuppressLint("SourceLockedOrientationActivity")
             public void onClick(View v) {
                 if (PlayMovieActivity.this.flag) {
                     PlayMovieActivity.this.btn_fullscreen.setImageDrawable(PlayMovieActivity.this.getResources().getDrawable(R.drawable.ic_fullscreen));
-                    PlayMovieActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                    PlayMovieActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
                     PlayMovieActivity.this.flag = false;
                     return;
                 }
                 PlayMovieActivity.this.btn_fullscreen.setImageDrawable(PlayMovieActivity.this.getResources().getDrawable(R.drawable.ic_baseline_fullscreen_exit_24));
-                PlayMovieActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+                PlayMovieActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 PlayMovieActivity.this.flag = true;
             }
         });

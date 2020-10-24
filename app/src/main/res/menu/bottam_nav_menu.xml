@@ -22,5 +22,10 @@
         android:title="Favourites"
         android:icon="@drawable/b_fav"
         app:cnb_backgroundColor="@color/cardview_dark_background"/>
+    <item android:id="@+id/b_gallary"
+        android:title="Gallary"
+        android:icon="@drawable/ic_folder"
+        app:cnb_backgroundColor="@color/cardview_dark_background"/>
+
 </group>
 </menu>

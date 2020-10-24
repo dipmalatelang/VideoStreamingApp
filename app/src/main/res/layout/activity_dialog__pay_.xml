@@ -252,7 +252,7 @@
                             android:layout_below="@+id/IVAmazonLogo"
                             android:layout_centerHorizontal="true"
                             android:linksClickable="true"
-                            android:text="AmazonPay"
+                            android:text="PayTm"
                             android:textColor="@color/color_text_white"
                             android:textSize="12sp" />
 
@@ -278,7 +278,7 @@
                             android:layout_below="@+id/PerfectMoney"
                             android:layout_centerHorizontal="true"
                             android:linksClickable="true"
-                            android:text="OlaMoney"
+                            android:text=""
                             android:textColor="@color/color_text_white"
                             android:textSize="12sp" />
 

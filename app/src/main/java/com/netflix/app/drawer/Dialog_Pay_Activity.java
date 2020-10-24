@@ -15,7 +15,7 @@ public class Dialog_Pay_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_dialog__pay_);
         String[] descriptionData = {"Plans", "Sign In", "Pay", "Watch"};
 
-        StateProgressBar stateProgressBar = (StateProgressBar) findViewById(R.id.state_progress_id);
+        StateProgressBar stateProgressBar =  findViewById(R.id.state_progress_id);
         stateProgressBar.setStateDescriptionData(descriptionData);
     }
 }

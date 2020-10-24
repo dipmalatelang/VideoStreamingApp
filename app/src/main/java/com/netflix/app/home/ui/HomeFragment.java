@@ -24,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,7 +72,7 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
     private RecyclerView movie_recyclerview;
     private TextView Tv_seeall;
     private List<SlidePojo> Imgslide;
-
+    private ProgressBar progressBar;
     SliderPagerAdapter adapter;
 
     @Override
@@ -79,10 +80,11 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.h_fragment_home_, container, false);
+        getSliderData();
 
         iniViews(view);
+
         InMovies();
-        getSliderData();
 
 
         Tv_seeall.setOnClickListener(new View.OnClickListener() {
@@ -110,6 +112,7 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         indicator = view.findViewById(R.id.indicator);
         movie_recyclerview = view.findViewById(R.id.movie_recyclerview);
         Tv_seeall = view.findViewById(R.id.Tv_seeall);
+        progressBar =view.findViewById(R.id.progressBar);
     }
 
 
@@ -132,6 +135,38 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 
     }
 
+
+     //getSliderDataAPiforslideimage
+    public void getSliderData() {
+        String slider = "slide";
+        ApiInterface apiInterface = ApiCall.getApiData().create(ApiInterface.class);
+        Call<List<SlidePojo>> call = apiInterface.getSlideData(slider);
+        call.enqueue(new Callback<List<SlidePojo>>() {
+            @Override
+            public void onResponse(Call<List<SlidePojo>> call, Response<List<SlidePojo>> response) {
+                if (response.code() ==200){
+                    for(int i=0;i<response.body().size();i++)
+                    {
+                        Log.d(TAG, "onResponsesizeofjsondata: "+response.body().size());
+                        Imgslide =response.body();
+                        adapter = new SliderPagerAdapter(getContext(),Imgslide);
+                        sliderpager.setAdapter(adapter);
+                        Timer timer = new Timer();
+                        progressBar.setVisibility(View.GONE);
+                        timer.scheduleAtFixedRate(new SliderTimer(), 4000, 6000);
+                        indicator.setupWithViewPager(sliderpager, true);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<SlidePojo>> call, Throwable t) {
+
+            }
+        });
+
+
+    }
     class SliderTimer extends TimerTask {
 
         @Override
@@ -152,36 +187,9 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         }
     }
 
-     //getSliderDataAPiforslideimage
-    public void getSliderData() {
-        String slider = "slide";
-        ApiInterface apiInterface = ApiCall.getApiData().create(ApiInterface.class);
-        Call<List<SlidePojo>> call = apiInterface.getSlideData(slider);
-        call.enqueue(new Callback<List<SlidePojo>>() {
-            @Override
-            public void onResponse(Call<List<SlidePojo>> call, Response<List<SlidePojo>> response) {
-                if (response.code() ==200){
-                    for(int i=0;i<response.body().size();i++)
-                    {
-                        Log.d(TAG, "onResponsesizeofjsondata: "+response.body().size());
-                        Imgslide =response.body();
-                        adapter = new SliderPagerAdapter(getContext(),Imgslide);
-                        sliderpager.setAdapter(adapter);
-                        Timer timer = new Timer();
-                        timer.scheduleAtFixedRate(new SliderTimer(), 5000, 6000);
-                        indicator.setupWithViewPager(sliderpager, true);
-                    }
-                }
-            }
 
-            @Override
-            public void onFailure(Call<List<SlidePojo>> call, Throwable t) {
-
-            }
-        });
-
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
-
-
 }

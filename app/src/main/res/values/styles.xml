@@ -8,8 +8,6 @@
         <item name="bottomAppBarStyle">@style/Widget.MaterialComponents.BottomAppBar</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorOnPrimary">@color/colorWhite</item>
-        <item name="android:background">@drawable/background</item>
-
         <item name="colorOnSecondary">@color/colorPrimary</item>
         <item name="colorSurface">@color/colorWhite</item>
         <item name="android:textColor">@color/color_text_white</item>

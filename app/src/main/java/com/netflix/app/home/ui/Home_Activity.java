@@ -23,6 +23,7 @@ import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.netflix.app.R;
 import com.netflix.app.category.Category_Fragment;
 import com.netflix.app.drawer.PrimiumPlan_Activity;
+import com.netflix.app.drawer.PrivacyPolicy_Activity;
 import com.netflix.app.drawer.Profile_Activity;
 import com.netflix.app.drawer.RedeemGiftVoucher_Activity;
 import com.netflix.app.drawer.ReferEarn_Activity;
@@ -80,6 +81,10 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                     case R.id.b_favorites:
                         fragment = new Favorites_Fragment();
                         break;
+                    case R.id.b_gallary:
+                        fragment = new Gallary_Fragment();
+                        break;
+
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.rl_fragment_container,fragment).commit();
 
@@ -92,6 +97,8 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         switch (item.getItemId())
         {
             case R.id.m_home:
+                Intent homeintent = new Intent(this,Home_Activity.class);
+                startActivity(homeintent);
 
                 break;
 
@@ -112,7 +119,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 Toast.makeText(this, "redeem", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.m_privacyPolicy:
-                Intent p = new Intent(this, PrimiumPlan_Activity.class);
+                Intent p = new Intent(this, PrivacyPolicy_Activity.class);
                 startActivity(p);
                 Toast.makeText(this, "privacy policy", Toast.LENGTH_SHORT).show();
                 break;
