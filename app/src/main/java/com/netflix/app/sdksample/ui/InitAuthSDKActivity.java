@@ -246,9 +246,9 @@ public class InitAuthSDKActivity extends Activity implements InitAuthSDKCallback
             if (null != view) {
                 view.setVisibility(View.VISIBLE);
             }
-            mBtnWithoutLogin.setVisibility(View.VISIBLE);
+            mBtnWithoutLogin.setVisibility(View.GONE);
             mBtnEmailLogin.setVisibility(ZoomSDK.getInstance().isEmailLoginEnable() ? View.VISIBLE : View.GONE);
-            mBtnSSOLogin.setVisibility(View.VISIBLE);
+            mBtnSSOLogin.setVisibility(View.GONE);
             mProgressPanel.setVisibility(View.GONE);
             layoutJoin.setVisibility(View.VISIBLE);
             mReturnMeeting.setVisibility(View.GONE);
