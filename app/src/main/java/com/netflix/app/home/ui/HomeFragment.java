@@ -9,6 +9,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -20,37 +24,30 @@ import androidx.viewpager.widget.ViewPager;
 import android.transition.Slide;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.android.volley.toolbox.ImageLoader;
-import com.google.android.material.slider.Slider;
 import com.google.android.material.tabs.TabLayout;
 import com.netflix.app.R;
 import com.netflix.app.home.adapter.MovieAdapter;
 import com.netflix.app.home.adapter.MovieItemClickListener;
 import com.netflix.app.home.adapter.SliderPagerAdapter;
 import com.netflix.app.home.model.MovieData;
-import com.netflix.app.home.model.SlideData;
+
+import com.netflix.app.sdksample.ui.InitAuthSDKActivity;
 import com.netflix.app.utlis.ApiCall;
 import com.netflix.app.utlis.ApiInterface;
 import com.netflix.app.utlis.DataSources;
 import com.netflix.app.utlis.SlidePojo;
-import com.netflix.app.utlis.SliderData;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.simpleframework.xml.stream.Position;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -58,34 +55,38 @@ import java.util.TimerTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+
+
 
 import static android.content.ContentValues.TAG;
 
 
-public class HomeFragment extends Fragment implements MovieItemClickListener {
-    private List<SlideData> lstSlides;
-    private List<SliderData> list;
+public class HomeFragment extends Fragment implements MovieItemClickListener  {
+    private List<SlidePojo> Imgslide;
+
     private ViewPager sliderpager;
     private TabLayout indicator;
     private RecyclerView movie_recyclerview;
     private TextView Tv_seeall;
-    private List<SlidePojo> Imgslide;
     private ProgressBar progressBar;
     SliderPagerAdapter adapter;
+   private Toolbar toolbar;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.h_fragment_home_, container, false);
+
         getSliderData();
-
         iniViews(view);
-
         InMovies();
 
+         toolbar = getActivity().findViewById(R.id.toolbar);
+         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowTitleEnabled(false);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         Tv_seeall.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +103,7 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         return view;
     }
 
+
     private void InMovies() {
         MovieAdapter movieAdapter = new MovieAdapter(getContext(), DataSources.getmovie(), HomeFragment.this);
         movie_recyclerview.setAdapter(movieAdapter);
@@ -114,8 +116,6 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         Tv_seeall = view.findViewById(R.id.Tv_seeall);
         progressBar =view.findViewById(R.id.progressBar);
     }
-
-
     public void onMovieClick(MovieData movie, ImageView movieImageView) {
 
 
@@ -134,7 +134,6 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
         // it works great
 
     }
-
 
      //getSliderDataAPiforslideimage
     public void getSliderData() {
@@ -167,6 +166,54 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
 
 
     }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        menu.clear();
+        inflater.inflate(R.menu.appbar_menu_item, menu);
+        MenuItem item = menu.findItem(R.id.action_search);
+
+        SearchView searchView = new SearchView(((AppCompatActivity) getContext()).getSupportActionBar().getThemedContext());
+
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW | MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        item.setActionView(searchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+        searchView.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View v) {
+                                          }
+                                      }
+        );
+
+
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.ic_videocall:
+                startActivity(new Intent(getContext(), InitAuthSDKActivity.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
+
     class SliderTimer extends TimerTask {
 
         @Override
@@ -186,7 +233,6 @@ public class HomeFragment extends Fragment implements MovieItemClickListener {
             }
         }
     }
-
 
     @Override
     public void onDestroy() {

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "72058414309",
+    "firebase_url": "https://videostreamingapp-cd4ce.firebaseio.com",
+    "project_id": "videostreamingapp-cd4ce",
+    "storage_bucket": "videostreamingapp-cd4ce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:72058414309:android:ee40d580ed25fe7e70a00c",
+        "android_client_info": {
+          "package_name": "com.netflix.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "72058414309-6lnsu45qohoobiskg7ut24sd1cc5fofo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCznmiCFYnEkjGGLqJ7PE_3zjslSicxxsM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "72058414309-6lnsu45qohoobiskg7ut24sd1cc5fofo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

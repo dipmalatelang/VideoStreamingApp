@@ -26,4 +26,7 @@
         <color name="color_Closed">#ACACAC</color>
         <color name="color_text_black">#000</color>
         <color name="color_tab_highlight">#00DEFA</color>
+
+        <color name="silver">#C0C0C0</color>
+        <color name="transparent">#00000000</color>
 </resources>

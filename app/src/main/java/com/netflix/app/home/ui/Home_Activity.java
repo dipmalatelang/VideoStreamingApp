@@ -31,7 +31,7 @@ import com.netflix.app.favorites.Favorites_Fragment;
 
 import com.netflix.app.videos.AllVideos_Fragment;
 
-public class Home_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener , FragmentChangeListener {
+public class Home_Activity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener  {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     NavigationView design_navigation_view;
@@ -82,7 +82,8 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                         fragment = new Favorites_Fragment();
                         break;
                     case R.id.b_gallary:
-                        fragment = new Gallary_Fragment();
+                        Intent gallayintent = new  Intent (Home_Activity.this,Gallary_Activity.class);
+                        startActivity(gallayintent);
                         break;
 
                 }
@@ -150,12 +151,12 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
         return true;
     }
 
-    @Override
-    public void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();;
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.rl_fragment_container, fragment, fragment.toString());
-        fragmentTransaction.addToBackStack(fragment.toString());
-        fragmentTransaction.commit();
-    }
+//    @Override
+//    public void replaceFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();;
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.rl_fragment_container, fragment, fragment.toString());
+//        fragmentTransaction.addToBackStack(fragment.toString());
+//        fragmentTransaction.commit();
+//    }
 }

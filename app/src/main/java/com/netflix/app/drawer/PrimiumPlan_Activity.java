@@ -13,12 +13,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.kofigyan.stateprogressbar.StateProgressBar;
-import com.kofigyan.stateprogressbar.components.StateItem;
-import com.kofigyan.stateprogressbar.listeners.OnStateItemClickListener;
+
 import com.netflix.app.R;
 import com.netflix.app.home.ui.Home_Activity;
 

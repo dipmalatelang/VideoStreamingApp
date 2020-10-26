@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
 
@@ -82,9 +83,12 @@ dependencies {
     implementation 'com.google.android:flexbox:2.0.1'
     implementation fileTree(dir: 'src\\main\\res\\values\\commonlib', include: ['*.aar', '*.jar'], exclude: [])
 
-        implementation project(path: ':mobilertc')
-        implementation project(path: ':commonlib')
+    //Firebase
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-analytics'
 
+    implementation project(path: ':mobilertc')
+    implementation project(path: ':commonlib')
 
 
 }
