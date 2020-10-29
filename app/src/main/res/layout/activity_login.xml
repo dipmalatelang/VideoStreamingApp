@@ -161,14 +161,14 @@
                     android:textColor="@drawable/color_white_to_black"
                     android:textSize="12sp"/>
 
-<!--                <com.facebook.login.widget.LoginButton-->
-<!--                    android:id="@+id/fblogin"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:visibility="gone"-->
-<!--                    xmlns:facebook="http://schemas.android.com/apk/res-auto"-->
-<!--                    facebook:com_facebook_login_text="Login with Facebook"-->
-<!--                    android:layout_below="@+id/Btn_gmail"/>-->
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/fblogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    xmlns:facebook="http://schemas.android.com/apk/res-auto"
+                    facebook:com_facebook_login_text="Login with Facebook"
+                    android:layout_below="@+id/Btn_gmail"/>
 
                 <TextView
                     android:id="@+id/Btn_phone"
@@ -231,16 +231,16 @@
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/Signup"/>
 
-<!--            <com.google.android.gms.common.SignInButton-->
-<!--                android:id="@+id/sign_In_Button"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="252dp"-->
-<!--                android:visibility="gone"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintHorizontal_bias="0.253"-->
-<!--                app:layout_constraintStart_toStartOf="parent" />-->
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_In_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="252dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.253"
+                app:layout_constraintStart_toStartOf="parent" />
 
         </RelativeLayout>
 

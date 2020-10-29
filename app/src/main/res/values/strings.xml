@@ -31,5 +31,7 @@
     <string name="settings_switch_domain">Switch domain</string>
     <string name="settings_hide_screen_share_toolbar_annotation">Hide annotation button in screen share</string>
     <string name="settings_hide_screen_share_toolbar_stopshare">Hide stopshare button in screen share</string>
+    <string name="facebook_app_id">1000122403809639</string>
+    <string name="fb_login_protocol_scheme">fb1000122403809639</string>
 
 </resources>

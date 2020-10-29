@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 import com.netflix.app.R;
 import com.netflix.app.category.Category_Fragment;
@@ -143,6 +144,7 @@ public class Home_Activity extends AppCompatActivity implements NavigationView.O
                 break;
             case R.id.m_logout:
                 finish();
+                FirebaseAuth.getInstance().signOut();
                 break;
 
 
